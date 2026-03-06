@@ -1,17 +1,20 @@
-name: EXP-6 CI Workflow
+name: CI Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Run CI step
-        run: echo "EXP-6 GitHub Actions CI/CD Successful"
+      - name: Run Build
+        run: echo "Build Successful"
+
+      - name: Trigger Jenkins
+        run: |
+          curl -X POST http://localhost:8080/job/devops-job/build \
+          --user admin:YOUR_API_TOKEN
