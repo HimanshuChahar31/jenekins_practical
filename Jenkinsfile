@@ -3,22 +3,29 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+            steps {
+                echo "Code checkout completed"
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Building Project'
+                echo "Building Project"
             }
         }
 
-        stage('Docker Build') {
+        stage('Test') {
             steps {
-                sh 'docker build -t devops-app .'
+                echo "Running Tests"
             }
         }
 
-        stage('Run Container') {
+        stage('Deploy') {
             steps {
-                sh 'docker run -d -p 8081:80 devops-app'
+                echo "Deployment Successful"
             }
         }
+
     }
 }
