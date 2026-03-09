@@ -2,7 +2,8 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -12,12 +13,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Show Project Files
+      - name: Show Files
         run: ls -la
 
-      - name: Build Step
-        run: echo "Build successful"
-
-      - name: Trigger Jenkins
-        run: |
-          curl -X POST http://localhost:8080/job/jenkins_practical/build
+      - name: Build Test
+        run: echo "CI Pipeline Successful"
